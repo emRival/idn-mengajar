@@ -35,6 +35,7 @@ jobs:
       - name: Replace API Keys
         run: |
           echo "Replacing API keys in all files:"
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i 's/YOUR_FIREBASE_API_KEY_PLACEHOLDER/${{ secrets.API_KEY_FIREBASE }}/g' {} \;
           find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.css" \) -exec sed -i 's/YOUR_GEMINI_API_KEY_PLACEHOLDER/${{ secrets.API_KEY_GEMINI }}/g' {} \;
           
           echo "Final verification:"
