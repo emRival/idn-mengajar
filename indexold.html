@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alur Pengajuan IDN Mengajar</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Fallback color */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom right, #061f4a, #111827, #000000);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
+        }
+        .font-display {
+            font-family: 'Baloo 2', cursive;
+        }
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Container for the moving lights */
+        .light-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicking through */
+            z-index: 0;
+            overflow: hidden; /* Contain lights within this container */
+        }
+
+        /* Individual light particle */
+        .light {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #3b82f6; /* Blue light color */
+            border-radius: 50%;
+            box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #60a5fa;
+            opacity: 0;
+            animation: move-light linear infinite;
+        }
+
+        /* Different animations for each light */
+        .light:nth-child(1) { animation-name: move-light-1; animation-duration: 15s; animation-delay: 1s; }
+        .light:nth-child(2) { animation-name: move-light-2; animation-duration: 20s; animation-delay: 5s; }
+        .light:nth-child(3) { animation-name: move-light-3; animation-duration: 18s; animation-delay: 8s; }
+        .light:nth-child(4) { animation-name: move-light-4; animation-duration: 22s; animation-delay: 3s; }
+
+        @keyframes move-light-1 {
+            0% { transform: translate(10vw, -10vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(90vw, 110vh); opacity: 0; }
+        }
+        @keyframes move-light-2 {
+            0% { transform: translate(90vw, 10vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(-10vw, 80vh); opacity: 0; }
+        }
+        @keyframes move-light-3 {
+            0% { transform: translate(110vw, 70vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(20vw, -10vh); opacity: 0; }
+        }
+        @keyframes move-light-4 {
+            0% { transform: translate(-10vw, 50vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, 60vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gray-900 flex flex-col items-center justify-center z-50 transition-opacity duration-1000">
+        <img src="https://idn.sch.id/wp-content/uploads/2024/08/cropped-Logo-IDN-Biru-2-1.png" alt="Logo IDN" class="h-24 mb-6 animate-pulse">
+        <div class="w-64 bg-gray-700 rounded-full h-2.5">
+            <div id="loading-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <p id="loading-percentage" class="text-white text-2xl font-display mt-4">0%</p>
+    </div>
+
+    <!-- Animated lights container -->
+    <div class="light-container">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="relative z-10">
+        <div class="container mx-auto px-4 py-16">
+
+            <!-- Header Section -->
+            <header class="text-center mb-12">
+                <img src="https://idn.sch.id/wp-content/uploads/2024/08/cropped-Logo-IDN-Biru-2-1.png" alt="Logo IDN" class="mx-auto h-20 md:h-24 mb-6" onerror="this.style.display='none'">
+                <h1 class="text-4xl md:text-5xl font-display text-white">Alur Pengajuan IDN Mengajar</h1>
+                <p class="mt-3 text-lg text-gray-300 max-w-3xl mx-auto">Panduan untuk siswa dan orang tua dalam mengikuti program IDN Boarding School Pamijahan, Bogor.</p>
+            </header>
+
+            <!-- Info Cards Container -->
+            <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-8 mb-16">
+                <!-- PIC Information Card -->
+                <div class="glass-card rounded-xl shadow-lg p-6 text-center">
+                    <h3 class="text-xl font-bold text-white">Informasi Penanggung Jawab (PIC)</h3>
+                    <p class="mt-2 text-gray-300">Semua proses pengajuan memerlukan <strong class="text-yellow-400">persetujuan</strong> dari PIC.</p>
+                    <p class="mt-3 font-semibold text-lg text-blue-300">Muhammad Rival</p>
+                    <p class="text-gray-300">WhatsApp: 0899-8419-000</p>
+                </div>
+                <!-- Service Hours Card -->
+                <div class="glass-card rounded-xl shadow-lg p-6 text-center">
+                    <h3 class="text-xl font-bold text-white">Waktu Layanan Pengajuan</h3>
+                    <p class="mt-2 text-gray-300">Pengajuan dan konsultasi dilayani pada jam kerja.</p>
+                    <p class="mt-3 font-semibold text-lg text-blue-300">Senin - Jumat</p>
+                    <p class="text-gray-300">Pukul 07.00 - 15.00 WIB</p>
+                </div>
+            </div>
+
+
+            <!-- Timeline Container -->
+            <div class="max-w-3xl mx-auto">
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-10 top-0 h-full w-0.5 bg-blue-900"></div>
+
+                    <!-- Step 1: Pembentukan Tim -->
+                    <div class="relative flex items-start mb-12">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0 w-20 h-20 bg-gray-900 border-4 border-blue-500 text-blue-400 rounded-full flex items-center justify-center z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.125-1.273-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.125-1.273.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <div class="ml-8 w-full">
+                            <div class="glass-card p-6 rounded-xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-sm font-semibold text-blue-400">TAHAP 1</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Pembentukan Tim</h3>
+                                <ol class="mt-4 space-y-3 text-gray-300 list-decimal list-inside">
+                                    <li>Bentuk tim yang terdiri dari maksimal 4 siswa.</li>
+                                    <li>Daftarkan nama anggota tim kepada PIC untuk mendapatkan <strong class="text-yellow-400">persetujuan</strong> awal.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Perizinan & Proposal -->
+                    <div class="relative flex items-start mb-12">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0 w-20 h-20 bg-gray-900 border-4 border-indigo-500 text-indigo-400 rounded-full flex items-center justify-center z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <div class="ml-8 w-full">
+                            <div class="glass-card p-6 rounded-xl shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-sm font-semibold text-indigo-400">TAHAP 2</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Perizinan dan Proposal</h3>
+                                <ol class="mt-4 space-y-3 text-gray-300 list-decimal list-inside">
+                                    <li>Setiap anggota wajib meminta izin orang tua (bukti screenshot) dan menyerahkannya kepada PIC.</li>
+                                    <li>Susun proposal kegiatan menggunakan template yang telah disediakan.</li>
+                                    <li>Serahkan proposal kepada PIC untuk diperiksa dan mendapatkan <strong class="text-yellow-400">persetujuan</strong>.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Administrasi -->
+                    <div class="relative flex items-start mb-12">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0 w-20 h-20 bg-gray-900 border-4 border-purple-500 text-purple-400 rounded-full flex items-center justify-center z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <div class="ml-8 w-full">
+                            <div class="glass-card p-6 rounded-xl shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-sm font-semibold text-purple-400">TAHAP 3</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Administrasi dan Koordinasi</h3>
+                                <ol class="mt-4 space-y-3 text-gray-300 list-decimal list-inside">
+                                    <li>Setelah proposal disetujui, PIC akan menerbitkan surat permohonan resmi ke sekolah tujuan.</li>
+                                    <li>Tunggu surat balasan dari sekolah, lalu laporkan kepada PIC.</li>
+                                    <li>Buat susunan acara (rundown) rinci dan ajukan kepada PIC untuk <strong class="text-yellow-400">persetujuan</strong>.</li>
+                                    <li>Setelah rundown disetujui, PIC akan menerbitkan surat tugas resmi dan tim wajib mengisi formulir record.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Finalisasi -->
+                    <div class="relative flex items-start">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0 w-20 h-20 bg-gray-900 border-4 border-rose-500 text-rose-400 rounded-full flex items-center justify-center z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <div class="ml-8 w-full">
+                            <div class="glass-card p-6 rounded-xl shadow-lg hover:shadow-rose-500/20 hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-sm font-semibold text-rose-400">TAHAP 4</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Persiapan Akhir</h3>
+                                <ol class="mt-4 space-y-3 text-gray-300 list-decimal list-inside">
+                                    <li>Cetak semua dokumen yang telah disetujui PIC (surat permohonan, surat tugas, rundown).</li>
+                                    <li>Sebagai prosedur terakhir, mintalah izin keberangkatan kepada Wakasis.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="text-center mt-20 text-gray-400">
+                <p>&copy; 2024 Program IDN Mengajar. Hak Cipta Dilindungi.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for loading screen
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingBar = document.getElementById('loading-bar');
+        const loadingPercentage = document.getElementById('loading-percentage');
+        let progress = 0;
+
+        const interval = setInterval(() => {
+            progress += 1;
+            loadingBar.style.width = progress + '%';
+            loadingPercentage.textContent = progress + '%';
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loadingScreen.classList.add('opacity-0', 'pointer-events-none');
+                }, 500); // Wait half a second before fading out
+            }
+        }, 30); // Adjust interval time for loading speed (e.g., 30ms for 3 seconds)
+    </script>
+
+</body>
+</html>

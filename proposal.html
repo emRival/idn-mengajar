@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal IDN Mengajar 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        idn: {
+                            primary: '#0056b3',
+                            dark: '#003366',
+                            light: '#e6f0fa',
+                            accent: '#fbbf24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        arabic: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Print Styles */
+        @media print {
+            @page { margin: 1cm; size: A4; }
+            body { background: white; color: black; font-size: 12pt; }
+            .no-print { display: none !important; }
+            .print-break { break-inside: avoid; page-break-inside: avoid; }
+            .print-new-page { page-break-before: always; }
+            
+            .shadow-xl, .shadow-lg, .shadow-md { box-shadow: none !important; }
+            .bg-gradient-to-br { background: none !important; border: 1px solid #ccc; }
+            .text-white { color: #000 !important; }
+            .bg-idn-primary { background: none !important; border: 1px solid #0056b3; color: #0056b3 !important; }
+            img { max-width: 100% !important; }
+            
+            .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+        }
+
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE 10+ */
+        }
+        .carousel-container::-webkit-scrollbar { 
+            display: none; /* Chrome/Safari/Opera */
+        }
+        .carousel-item {
+            scroll-snap-align: center;
+            flex: 0 0 auto;
+        }
+        
+        /* Loader */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #0056b3;
+            width: 30px;
+            height: 30px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* AI Chat Animation */
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out both;
+            margin: 0 2px;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* AI Sparkle Effect */
+        .sparkle-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .sparkle-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: sparkle 3s infinite;
+        }
+        @keyframes sparkle {
+            0% { transform: translate(-100%, -100%) rotate(45deg); }
+            100% { transform: translate(100%, 100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 no-print" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-idn-light text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                    <img src="https://idn.sch.id/wp-content/uploads/2024/08/cropped-Logo-IDN-Biru-2-1.png" alt="">
+                </div>
+                <div>
+                    <h1 class="font-heading font-bold text-idn-primary leading-none">IDN MENGAJAR</h1>
+                    <p class="text-xs text-slate-500 font-medium tracking-wider">PROGRAM 2025</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                <a href="#pendahuluan" class="hover:text-idn-primary transition-colors">Pendahuluan</a>
+                <a href="#tujuan" class="hover:text-idn-primary transition-colors">Tujuan</a>
+                <a href="#materi" class="hover:text-idn-primary transition-colors">Materi</a>
+                <a href="#teknis" class="hover:text-idn-primary transition-colors">Teknis</a>
+                <a href="#ai-assistant" class="hover:text-idn-primary transition-colors text-idn-accent font-bold"><i class="fa-solid fa-robot mr-1"></i> Tanya AI</a>
+                <a href="https://docs.google.com/presentation/d/1_-CJ16Z_NZSj2-Z-muS3XGzgRoO4sz9BBWGVpPvpL24/edit?usp=sharing" class="bg-idn-primary text-white px-5 py-2.5 rounded-full hover:bg-idn-dark transition-all shadow-lg hover:shadow-idn-primary/30 flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Download PDF
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-slate-700 text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-4 shadow-xl">
+            <a href="#pendahuluan" class="block text-slate-600">Pendahuluan</a>
+            <a href="#materi" class="block text-slate-600">Materi</a>
+            <a href="#ai-assistant" class="block text-slate-600">Tanya AI</a>
+            <a href="https://docs.google.com/presentation/d/1_-CJ16Z_NZSj2-Z-muS3XGzgRoO4sz9BBWGVpPvpL24/edit?usp=sharing" class="w-full bg-idn-primary text-white py-2 rounded-lg">Download PDF</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-br from-idn-light via-white to-slate-100">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-idn-primary/5 -skew-x-12 translate-x-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-idn-primary/10 text-idn-primary font-semibold text-sm mb-6 fade-in-up">
+                    <span class="w-2 h-2 rounded-full bg-idn-primary animate-pulse"></span>
+                    Proposal Kerjasama Pendidikan
+                </div>
+                <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-tight fade-in-up delay-100">
+                    Membangun Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-idn-primary to-blue-400">Digital</span> yang <span class="text-transparent bg-clip-text bg-gradient-to-r from-idn-dark to-idn-primary">Berakhlak</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto fade-in-up delay-200">
+                    Program pengabdian masyarakat IDN Boarding School Pamijahan untuk meningkatkan kompetensi IT siswa SMP & SMK di Indonesia.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up delay-300 no-print">
+                    <a href="#materi" class="px-8 py-4 bg-idn-primary text-white rounded-xl font-bold hover:bg-idn-dark transition-all shadow-xl shadow-idn-primary/20">
+                        Lihat Pilihan Materi
+                    </a>
+                    <a href="#ai-assistant" class="px-8 py-4 bg-white text-idn-primary border-2 border-idn-primary rounded-xl font-bold hover:bg-idn-light transition-all flex items-center justify-center gap-2">
+                       <i class="fa-solid fa-wand-magic-sparkles"></i> Rekomendasi AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PENDAHULUAN SECTION -->
+    <section id="pendahuluan" class="py-20 bg-white print-break">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-20 h-20 bg-idn-accent/20 rounded-full blur-xl"></div>
+                    
+                    <!-- DYNAMIC HERO IMAGE -->
+                    <div class="relative rounded-2xl shadow-2xl overflow-hidden h-[500px] bg-slate-200 group">
+                        <img id="hero-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Siswa Belajar" class="w-full h-full object-cover transition-opacity duration-500 opacity-0">
+                        <div class="absolute inset-0 flex items-center justify-center bg-slate-100 z-0" id="hero-loader">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block">
+                        <p class="font-heading font-bold text-idn-dark text-lg mb-1">"Khoirunnas Anfa'uhum Linnas"</p>
+                        <p class="text-sm text-slate-500">Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-right mb-4">
+                        <h2 class="font-arabic text-4xl text-idn-primary">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</h2>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold text-slate-900 mb-6 relative inline-block">
+                        Mukadimah & Latar Belakang
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-idn-accent rounded-full"></span>
+                    </h3>
+                    <div class="prose text-slate-600 text-lg leading-relaxed">
+                        <p class="mb-4">
+                            Segala puji bagi Allah <strong>Subhanahu wa Ta’ala</strong>, Tuhan semesta alam. Shalawat serta salam semoga senantiasa tercurah kepada Nabi Muhammad <strong>Shallallahu ‘alaihi wa sallam</strong>.
+                        </p>
+                        <p class="mb-4">
+                            Perkembangan teknologi yang sangat pesat menuntut generasi muda untuk tidak hanya menjadi pengguna, tetapi juga pencipta. <strong>IDN Mengajar</strong> hadir sebagai wujud nyata kontribusi kami dalam menjembatani kesenjangan <em>skill</em> digital di sekolah-sekolah.
+                        </p>
+                        <p>
+                            Kami ingin berbagi pengalaman dan kurikulum berbasis industri kepada siswa SMP dan SMK, khususnya dalam bidang Coding, Desain Kreatif, dan Jaringan Komputer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TUJUAN (Grid Cards) -->
+    <section id="tujuan" class="py-20 bg-idn-light/50 print-break">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-4">Maksud & Tujuan</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Target utama dari kegiatan ini adalah memberikan dampak nyata bagi peserta didik.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-idn-primary">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-idn-primary text-2xl mb-6">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-slate-800">Hard-Skill IT</h3>
+                    <p class="text-slate-600">Mengembangkan kemampuan teknis praktis yang tidak selalu didapatkan di kurikulum reguler.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-idn-accent">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-idn-accent text-2xl mb-6">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-slate-800">Persiapan Industri</h3>
+                    <p class="text-slate-600">Mengenalkan standar industri digital terkini agar siswa lebih siap menghadapi dunia kerja.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-green-500">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fa-solid fa-handshake-simple"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-slate-800">Silaturahmi</h3>
+                    <p class="text-slate-600">Mempererat hubungan antar lembaga pendidikan dan melatih soft-skill komunikasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERI SECTION -->
+    <section id="materi" class="py-20 bg-white print-new-page">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-idn-primary font-bold tracking-wider uppercase text-sm">Kurikulum Unggulan</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate-900 mt-2">Pilihan Materi Pelatihan</h2>
+            </div>
+
+            <!-- SMP CONTENT -->
+            <div class="mb-20 print-break">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-idn-primary text-white px-6 py-2 rounded-full font-bold shadow-lg">TINGKAT SMP</div>
+                    <div class="h-px bg-slate-200 flex-grow"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1: Roblox & Scratch -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-idn-primary/20 group-hover:bg-transparent transition-colors z-10"></div>
+                            <img src="./assets/roblox.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Roblox">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-solid fa-gamepad mr-2"></i>Roblox & Scratch</h4>
+                            <p class="text-sm text-slate-600">Belajar logika <em>coding</em> (loops, if-else) dengan membuat game 3D yang seru.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: Micro:Bit -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="./assets/tinybit.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Microbit">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-solid fa-microchip mr-2"></i>Tiny:Bit (Robotic)</h4>
+                            <p class="text-sm text-slate-600">Pengenalan dasar robotika dan pemrograman mikrokontroler sederhana.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Python -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="./assets/pythonbasic.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Python">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-brands fa-python mr-2"></i>Python Basic Coding</h4>
+                            <p class="text-sm text-slate-600">Fundamental bahasa pemrograman Python untuk pemula (Logika & Syntax).</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Canva -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="./assets/canvasmp.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Canva">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-solid fa-palette mr-2"></i>Creative Canva</h4>
+                            <p class="text-sm text-slate-600">Desain poster dakwah dan jadwal pelajaran yang estetik & profesional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5: Google -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="./assets/googleworkspace.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Google">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-brands fa-google mr-2"></i>Google Workspace</h4>
+                            <p class="text-sm text-slate-600">Optimalisasi Docs, Slides & Sheets untuk tugas sekolah yang efisien.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 6: Figma -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 hover:border-idn-primary transition-all hover:shadow-xl">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="./assets/figmasmp.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Figma">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-idn-primary transition-colors"><i class="fa-brands fa-figma mr-2"></i>Intro to Figma</h4>
+                            <p class="text-sm text-slate-600">Pengenalan dasar UI/UX Design untuk merancang tampilan aplikasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMK CONTENT -->
+            <div class="print-break">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-idn-dark text-white px-6 py-2 rounded-full font-bold shadow-lg">TINGKAT SMK</div>
+                    <div class="h-px bg-slate-200 flex-grow"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- TKJ -->
+                    <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all">
+                        <div class="h-48 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                            <img src="./assets/tkj.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Mikrotik Server">
+                            <div class="absolute bottom-4 left-4 z-20 text-white">
+                                <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-lg mb-2 shadow-lg">
+                                    <i class="fa-solid fa-network-wired"></i>
+                                </div>
+                                <h4 class="font-bold text-lg">Teknik Jaringan</h4>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 text-sm mb-4">Mempelajari MTCNA & MTCRE: Manajemen bandwidth, Firewall security, dan Routing OSPF untuk jaringan stabil.</p>
+                            <ul class="text-xs text-slate-500 space-y-2">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Config Basic & DHCP</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Firewall Filter & NAT</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- RPL -->
+                    <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all">
+                        <div class="h-48 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                            <img src="./assets/webdev.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Web Coding">
+                            <div class="absolute bottom-4 left-4 z-20 text-white">
+                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center text-lg mb-2 shadow-lg">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <h4 class="font-bold text-lg">Web Development</h4>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 text-sm mb-4">Fullstack dasar (HTML, CSS, JS). Siswa membuat Website Profil Sekolah atau Portofolio Pribadi.</p>
+                            <ul class="text-xs text-slate-500 space-y-2">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Modern CSS (Tailwind)</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Responsive Layout</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Flutter -->
+                    <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all">
+                        <div class="h-48 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                            <img src="./assets/flutter.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Mobile App">
+                            <div class="absolute bottom-4 left-4 z-20 text-white">
+                                <div class="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center text-lg mb-2 shadow-lg">
+                                    <i class="fa-solid fa-mobile-screen-button"></i>
+                                </div>
+                                <h4 class="font-bold text-lg">Mobile Dev (Flutter)</h4>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 text-sm mb-4">Membuat aplikasi Android/iOS multi-platform menggunakan framework Flutter (Dart).</p>
+                            <ul class="text-xs text-slate-500 space-y-2">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> UI Widget Building</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> State Management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Design -->
+                    <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all">
+                        <div class="h-48 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                            <img src="./assets/prodesign.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Graphic Design">
+                            <div class="absolute bottom-4 left-4 z-20 text-white">
+                                <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center text-lg mb-2 shadow-lg">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </div>
+                                <h4 class="font-bold text-lg">Pro Design</h4>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 text-sm mb-4">Branding identity, Desain CV ATS-Friendly, dan High-Fidelity App Mockup standar industri.</p>
+                            <ul class="text-xs text-slate-500 space-y-2">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Canva Pro Tricks</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Figma Prototyping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- REQUEST MATERI -->
+            <div class="mt-12 bg-gradient-to-r from-idn-primary to-idn-dark rounded-2xl p-8 text-center text-white shadow-2xl print-break">
+                <h3 class="font-bold text-2xl mb-2"><i class="fa-solid fa-lightbulb text-yellow-400 mr-2"></i> Punya Kebutuhan Khusus?</h3>
+                <p class="opacity-90 mb-6">Jika materi di atas belum sesuai, silakan ajukan materi khusus yang dibutuhkan sekolah Anda.</p>
+                <a href="#kontak" class="inline-block bg-white text-idn-primary font-bold px-6 py-2 rounded-full hover:bg-yellow-50 transition-colors no-print">
+                    Diskusikan dengan Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+   
+
+      <section id="teknis" class="py-20 bg-idn-light/30 print-break">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="font-heading text-2xl font-bold mb-6 text-slate-900 border-l-4 border-idn-primary pl-4">Teknis Pelaksanaan</h2>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="text-idn-primary text-xl"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Waktu</h4>
+                                <p class="text-sm text-slate-600">07.00 - 17.00 WIB (Fleksibel). H-1 Minggu konfirmasi.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="text-idn-primary text-xl"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Peserta</h4>
+                                <p class="text-sm text-slate-600">10-40 Siswa/Kelas. <strong>Wajib dipisah</strong> (Ikhwan/Akhwat).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="text-idn-primary text-xl"><i class="fa-solid fa-laptop"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Fasilitas</h4>
+                                <p class="text-sm text-slate-600">Lab Komputer / Laptop Pribadi (Min RAM 4GB), Proyektor, Internet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="font-heading text-2xl font-bold mb-6 text-slate-900 border-l-4 border-idn-accent pl-4">Anggaran Biaya</h2>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 h-full flex flex-col justify-center text-center">
+                        <div class="text-4xl text-idn-accent mb-4"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h3 class="text-slate-500 uppercase tracking-wide text-sm font-bold">Biaya Pelatihan</h3>
+                        <p class="text-4xl font-extrabold text-idn-primary my-4">SUKARELA</p>
+                        <p class="text-slate-600 text-sm mb-6">Kami tidak mematok tarif. Honorarium pemateri bersifat seikhlasnya (Infaq Pendidikan).</p>
+                        <div class="text-left bg-slate-50 p-4 rounded-lg text-sm border border-slate-200">
+                            <p class="font-bold text-slate-700 mb-2">Tanggung Jawab Mitra:</p>
+                            <ul class="space-y-1 text-slate-600">
+                                <li><i class="fa-solid fa-car text-slate-400 mr-2"></i>Transportasi PP Tim</li>
+                                <li><i class="fa-solid fa-utensils text-slate-400 mr-2"></i>Konsumsi selama acara</li>
+                                <li><i class="fa-solid fa-bed text-slate-400 mr-2"></i>Penginapan (Jika luar kota)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI CAROUSEL -->
+    <section id="galeri" class="py-20 bg-white print-break">
+        <div class="container mx-auto px-6">
+            <h2 class="font-heading text-3xl font-bold text-center mb-10">Galeri Dokumentasi</h2>
+            <div class="flex justify-end gap-2 mb-4 no-print">
+                <button onclick="scrollCarousel(-300)" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-idn-primary hover:text-white transition-all shadow-md"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="scrollCarousel(300)" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-idn-primary hover:text-white transition-all shadow-md"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div id="carousel-loader" class="loader"></div>
+            <div id="carousel" class="carousel-container flex gap-6 pb-8 snap-x hidden"></div>
+        </div>
+    </section>
+
+     <!-- AI RECOMMENDER SECTION (GEMINI POWERED) -->
+    <section id="ai-assistant" class="py-20 bg-gradient-to-br from-slate-900 to-idn-dark text-white print-break">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-2xl relative overflow-hidden">
+                
+                <!-- Decoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-idn-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+                <div class="text-center mb-8 relative z-10">
+                    <div class="inline-block bg-idn-accent/20 p-3 rounded-full mb-4 shadow-lg shadow-idn-accent/10">
+                        <i class="fa-solid fa-robot text-3xl text-idn-accent"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-2">IDN AI Assistant ✨</h2>
+                    <p class="text-slate-300">Ceritakan kebutuhan sekolah Anda, dan AI kami akan menganalisa materi yang paling tepat.</p>
+                </div>
+
+                <!-- Question Flow -->
+                <div id="ai-flow" class="space-y-6 relative z-10">
+                    
+                    <!-- STEP 1: Audience -->
+                    <div id="step-1" class="transition-all duration-500">
+                        <h3 class="text-lg font-semibold mb-4 text-idn-accent">1. Siapa target peserta pelatihan?</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <button onclick="selectAudience('Siswa SMP')" class="option-btn p-4 rounded-xl bg-white/10 hover:bg-idn-primary hover:scale-105 transition-all border border-white/10 text-left group">
+                                <i class="fa-solid fa-child-reaching mb-2 text-2xl block group-hover:text-idn-accent"></i>
+                                <span class="font-bold">Siswa SMP</span>
+                                <span class="text-xs block text-slate-400 mt-1 group-hover:text-white">Pemula / Usia 12-15</span>
+                            </button>
+                            <button onclick="selectAudience('Siswa SMK/SMA')" class="option-btn p-4 rounded-xl bg-white/10 hover:bg-idn-primary hover:scale-105 transition-all border border-white/10 text-left group">
+                                <i class="fa-solid fa-user-graduate mb-2 text-2xl block group-hover:text-idn-accent"></i>
+                                <span class="font-bold">Siswa SMK/SMA</span>
+                                <span class="text-xs block text-slate-400 mt-1 group-hover:text-white">Lanjut / Usia 16-18</span>
+                            </button>
+                            <button onclick="selectAudience('Guru/Staff')" class="option-btn p-4 rounded-xl bg-white/10 hover:bg-idn-primary hover:scale-105 transition-all border border-white/10 text-left group">
+                                <i class="fa-solid fa-chalkboard-user mb-2 text-2xl block group-hover:text-idn-accent"></i>
+                                <span class="font-bold">Guru / Staff</span>
+                                <span class="text-xs block text-slate-400 mt-1 group-hover:text-white">Administrasi & Ajar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Natural Language Input -->
+                    <div id="step-2" class="hidden opacity-0 transition-all duration-500">
+                        <h3 class="text-lg font-semibold mb-4 text-idn-accent">2. Ceritakan kondisi atau keinginan Anda</h3>
+                        <p class="text-sm text-slate-400 mb-2">Contoh: <em>"Siswa kami suka main game tapi belum tahu cara membuatnya"</em> atau <em>"Guru ingin presentasi yang tidak membosankan"</em>.</p>
+                        
+                        <textarea id="user-input" rows="3" class="w-full bg-white/10 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:border-idn-accent focus:ring-1 focus:ring-idn-accent transition-all" placeholder="Ketik di sini..."></textarea>
+                        
+                        <div class="flex gap-3 mt-4">
+                            <button onclick="analyzeInput()" class="sparkle-btn flex-1 bg-idn-accent text-idn-dark font-bold py-3 rounded-xl hover:bg-yellow-400 transition-all shadow-lg shadow-idn-accent/20">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Tanya Gemini AI
+                            </button>
+                            <button onclick="resetAI()" class="px-4 py-3 border border-slate-600 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- RESULT (Hidden initially) -->
+                    <div id="ai-result" class="hidden opacity-0 transition-all duration-500 bg-white/10 rounded-xl p-6 border border-idn-accent/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-idn-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                        
+                        <div class="flex flex-col md:flex-row items-start gap-6 relative z-10">
+                            <div class="w-full">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="bg-green-500 w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-lg">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <h4 class="text-slate-300 text-xs uppercase tracking-wider font-bold">Rekomendasi AI:</h4>
+                                </div>
+                                
+                                <h3 id="result-materi" class="text-2xl font-bold text-white mb-2 text-idn-accent">Materi Here</h3>
+                                
+                                <div class="bg-black/30 p-4 rounded-lg border-l-4 border-idn-accent mb-4">
+                                    <p class="text-[10px] text-slate-400 font-bold mb-1 uppercase tracking-wide">Saran Tema Kegiatan:</p>
+                                    <p id="result-theme" class="text-white font-medium italic text-lg">"Theme here"</p>
+                                </div>
+
+                                <p id="result-reason" class="text-slate-300 text-sm leading-relaxed italic mb-6">Reason here.</p>
+
+                                <a id="wa-link" href="#" target="_blank" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-bold transition-all w-full sm:w-auto justify-center shadow-lg shadow-green-600/20 hover:shadow-green-500/40 hover:-translate-y-1">
+                                    <i class="fa-brands fa-whatsapp"></i> Ajukan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                        <button onclick="resetAI()" class="mt-6 w-full text-center text-sm text-slate-400 hover:text-white underline">Cari rekomendasi lain</button>
+                    </div>
+
+                    <!-- Loader -->
+                    <div id="ai-loader" class="hidden text-center py-8">
+                        <div class="typing-indicator flex justify-center mb-4 space-x-1">
+                            <span class="bg-idn-accent"></span><span class="bg-idn-accent"></span><span class="bg-idn-accent"></span>
+                        </div>
+                        <p class="text-slate-300 text-sm font-medium animate-pulse">Gemini sedang berpikir...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontak" class="bg-slate-900 text-white pt-20 pb-10 print-break">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <h2 class="font-heading text-3xl font-bold mb-6">Siap Berkolaborasi?</h2>
+                    <p class="text-slate-400 text-lg mb-8">Mari bersama memajukan pendidikan teknologi di Indonesia. Hubungi kami untuk penjadwalan.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-idn-accent">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">PIC Pelaksana</p>
+                                <p class="font-bold text-lg">Muhammad Rival, S.Kom</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-green-500">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">WhatsApp</p>
+                                <p class="font-bold text-lg">0899-8419-000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">Email</p>
+                                <p class="font-bold text-lg">pamijahan@idn.sch.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                    <h3 class="font-bold text-xl mb-2">Jazakumullahu Khairan</h3>
+                    <p class="text-slate-400 mb-6">Besar harapan kami agar kerjasama ini dapat terjalin.</p>
+                    
+                    <div class="mt-6 pt-6 border-t border-slate-700 text-left">
+                        <p class="text-sm text-slate-500 mb-1">Menyetujui,</p>
+                        <p class="font-bold text-white">Muhammad Ifam Adrian, B.A (Hons)</p>
+                        <p class="text-xs text-slate-500">Kepala Unit SMP & SMK IDN Boarding School Pamijahan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+                &copy; 2025 IDN Boarding School Pamijahan. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- API KEY & CONFIG ---
+        const apiKey = "YOUR_GEMINI_API_KEY_PLACEHOLDER"; // Provided by environment
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const GALLERY_API_URL = 'https://script.google.com/macros/s/AKfycbwzL9LgtjSynz9YEl3iX0qsEMdU1DCftJ2Pvs9ZOnRNR8pLsJwSjgRrNImZVHO0l03ojQ/exec';
+
+        // --- 1. GALLERY LOGIC ---
+        async function loadGallery() {
+            const carousel = document.getElementById('carousel');
+            const loader = document.getElementById('carousel-loader');
+            try {
+                const response = await fetch(GALLERY_API_URL);
+                const json = await response.json();
+                if (json.success && json.data.length > 0) {
+                    // Hero Image Logic
+                    const heroImg = document.getElementById('hero-image');
+                    const heroLoader = document.getElementById('hero-loader');
+                    let heroIndex = 0;
+                    function updateHero() {
+                        const imgData = json.data[heroIndex];
+                        const newSrc = imgData.thumbnailUrlLarge || imgData.thumbnailUrl;
+                        const temp = new Image(); temp.src = newSrc;
+                        temp.onload = () => {
+                            heroImg.style.opacity = 0;
+                            setTimeout(() => { heroImg.src = newSrc; heroLoader.style.display='none'; heroImg.style.opacity=1; }, 500);
+                        };
+                        heroIndex = (heroIndex + 1) % json.data.length;
+                    }
+                    updateHero(); setInterval(updateHero, 5000);
+
+                    // Carousel Logic
+                    let html = '';
+                    json.data.forEach(item => {
+                        const imageUrl = item.thumbnailUrlLarge || item.thumbnailUrl;
+                        // Restore text overlay from API
+                        const title = item.title || "Dokumentasi";
+                        const desc = item.description || "Kegiatan IDN Mengajar";
+                        
+                        html += `
+                        <div class="carousel-item w-80 md:w-96 h-64 relative rounded-xl overflow-hidden group shrink-0 shadow-lg snap-center bg-slate-200">
+                            <img src="${imageUrl}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+                                <p class="font-bold truncate">${title}</p>
+                                <p class="text-xs opacity-80 truncate">${desc}</p>
+                            </div>
+                        </div>`;
+                    });
+                    carousel.innerHTML = html; loader.style.display = 'none'; carousel.classList.remove('hidden');
+                }
+            } catch(e) { console.error(e); }
+        }
+        function scrollCarousel(offset) { document.getElementById('carousel').scrollBy({left: offset, behavior: 'smooth'}); }
+        document.addEventListener('DOMContentLoaded', loadGallery);
+
+        // --- 2. GEMINI AI LOGIC ---
+        let userAudience = '';
+        
+        // List of available materials for Gemini to choose from
+        const contextMaterials = `
+        AVAILABLE COURSES FOR IDN MENGAJAR:
+        1. Roblox & Scratch (SMP): Logika coding game 3D.
+        2. Micro:Bit Robotic (SMP): Dasar robotika hardware.
+        3. Python Basic (SMP): Coding text-based fundamental.
+        4. Creative Canva (SMP/Guru): Desain grafis praktis.
+        5. Google Workspace (SMP/Guru): Office productivity.
+        6. Intro to Figma (SMP): Dasar UI/UX.
+        7. Teknik Jaringan MikroTik (SMK): Konfigurasi router & firewall.
+        8. Web Development (SMK): HTML, CSS, JS Fullstack.
+        9. Mobile Flutter (SMK): Aplikasi Android/iOS.
+        10. Pro Design (SMK): Branding & UI/UX Lanjut.
+        `;
+
+        function selectAudience(type) {
+            userAudience = type;
+            document.getElementById('step-1').classList.add('hidden');
+            const step2 = document.getElementById('step-2');
+            step2.classList.remove('hidden');
+            setTimeout(() => step2.classList.remove('opacity-0'), 100);
+        }
+
+        async function callGeminiAI(audience, input) {
+            const prompt = `
+            Act as an expert educational consultant for "IDN Mengajar".
+            
+            CONTEXT:
+            ${contextMaterials}
+            
+            USER REQUEST:
+            Target Audience: ${audience}
+            Problem/Goal: "${input}"
+            
+            TASK:
+            1. Select ONE best material from the available list that solves the user's problem.
+            2. Create a catchy, creative Theme Title (in Indonesian).
+            3. Write a short persuasive reason (in Indonesian) why this material is the perfect solution.
+            
+            OUTPUT JSON FORMAT ONLY:
+            {
+                "materi": "Name of Material",
+                "theme": "Creative Theme Title",
+                "reason": "Persuasive explanation..."
+            }
+            `;
+
+            try {
+                const response = await fetch(GEMINI_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: { responseMimeType: "application/json" }
+                    })
+                });
+
+                const data = await response.json();
+                const text = data.candidates[0].content.parts[0].text;
+                return JSON.parse(text);
+            } catch (error) {
+                console.error("Gemini Error:", error);
+                return null;
+            }
+        }
+
+        async function analyzeInput() {
+            const input = document.getElementById('user-input').value;
+            if (!input.trim()) { alert("Silakan ceritakan kebutuhan Anda."); return; }
+
+            document.getElementById('step-2').classList.add('hidden');
+            const loader = document.getElementById('ai-loader');
+            loader.classList.remove('hidden');
+
+            const result = await callGeminiAI(userAudience, input);
+            
+            loader.classList.add('hidden');
+            
+            if (result) {
+                showResult(result);
+            } else {
+                alert("Maaf, AI sedang sibuk. Coba lagi nanti.");
+                resetAI();
+            }
+        }
+
+        function showResult(data) {
+            document.getElementById('result-materi').innerText = data.materi;
+            document.getElementById('result-theme').innerText = `"${data.theme}"`;
+            document.getElementById('result-reason').innerText = data.reason;
+            
+            const waText = `Halo IDN Mengajar, saya tertarik dengan rekomendasi AI: "${data.materi}" dengan tema "${data.theme}" untuk ${userAudience}. Alasannya: ${data.reason}`;
+            document.getElementById('wa-link').href = `https://wa.me/628998419000?text=${encodeURIComponent(waText)}`;
+
+            const resultDiv = document.getElementById('ai-result');
+            resultDiv.classList.remove('hidden');
+            setTimeout(() => resultDiv.classList.remove('opacity-0'), 100);
+        }
+
+        function resetAI() {
+            document.getElementById('ai-result').classList.add('hidden', 'opacity-0');
+            document.getElementById('step-2').classList.add('hidden', 'opacity-0');
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('user-input').value = '';
+        }
+    </script>
+
+</body>
+</html>
